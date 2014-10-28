@@ -7,7 +7,8 @@
 // @grant       none
 // ==/UserScript==
 
-// Include jQuery
+
+// Include jQuery - CURRENTLY NOT IN USE
 var script = document.createElement('script');
 script.src = 'http://code.jquery.com/jquery-latest.min.js';
 script.type = 'text/javascript';
@@ -17,6 +18,9 @@ document.getElementsByTagName('head')[0].appendChild(script);
 var bbf = document.getElementById('bbFrameset');
 var qlw = document.getElementById('quick_links_wrap');
 
+// hovering div element
+var hello = document.createElement('div');
+
 // css class for hover elements - does not seem to work in GM
 // var hs = document.createElement('style');
 // hs.type = 'text/css';
@@ -24,8 +28,8 @@ var qlw = document.getElementById('quick_links_wrap');
 // bff.appendChild(hs);
 
 
+
 qlw.onmouseover = function() {
-  var hello = document.createElement('div');
   var pug = document.createElement('img');
   pug.setAttribute('src', 'http://www.i-love-pugs.com/images/PugPuppyFullView.jpg');
   hello.appendChild(pug);
@@ -48,6 +52,7 @@ qlw.onmouseover = function() {
   
 }
 
-// qlw.onmouseout = function() {
-//  hello.style.display = 'none';
-//} 
+qlw.onmouseout = function() {
+  while (hello.hasChildNodes()) {hello.removeChild(hello.lastChild)};
+  hello.style.display = 'none';
+} 
